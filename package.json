@@ -1,6 +1,6 @@
 {
-  "name": "lavalink-music-bot-v2",
-  "version": "2.0.0",
+  "name": "lavalink-music-bot-v4",
+  "version": "4.0.0",
   "private": true,
   "main": "src/index.js",
   "type": "commonjs",
@@ -13,8 +13,6 @@
   "dependencies": {
     "discord.js": "^14.26.2",
     "dotenv": "^16.4.5",
-    "erela.js": "^2.4.0",
-    "erela.js-spotify": "^1.2.0",
-    "axios": "^1.7.9"
+    "lavalink-client": "^2.5.0"
   }
 }

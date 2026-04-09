@@ -1,27 +1,20 @@
-const { baseEmbed } = require("../utils/embeds");
 const { msToTime } = require("../utils/time");
+const { info } = require("../utils/embeds");
 
 function queueEmbed(player) {
   const current = player.queue.current;
-  const upcoming = player.queue.slice(0, 10);
+  const upcoming = player.queue.tracks.slice(0, 10);
   const lines = [];
 
-  if (current) {
-    lines.push(`**الان:** [${current.title}](${current.uri}) — \`${msToTime(current.duration)}\``);
-  }
-
-  if (!upcoming.length) {
-    lines.push("\nلا توجد اغاني قادمة.");
-  } else {
+  if (current) lines.push(`**الان:** **${current.info.title}** — \`${msToTime(current.info.duration)}\``);
+  if (!upcoming.length) lines.push("\nلا توجد اغاني قادمة.");
+  else {
     lines.push("\n**القائمة القادمة:**");
-    upcoming.forEach((track, index) => {
-      lines.push(`${index + 1}. [${track.title}](${track.uri}) — \`${msToTime(track.duration)}\``);
-    });
+    upcoming.forEach((track, index) => lines.push(`${index + 1}. ${track.info.title} — \`${msToTime(track.info.duration)}\``));
   }
 
-  lines.push(`\n**الحجم:** ${player.volume}%`);
-  lines.push(`**التكرار:** ${player.get("repeatMode") || "off"}`);
-  return baseEmbed("قائمة التشغيل", lines.join("\n"));
+  lines.push(`\n**الصوت:** ${player.volume}%`);
+  return info("قائمة التشغيل", lines.join("\n"));
 }
 
 module.exports = { queueEmbed };

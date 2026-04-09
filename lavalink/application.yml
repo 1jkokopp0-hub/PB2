@@ -6,11 +6,11 @@ lavalink:
     password: ${LAVALINK_SERVER_PASSWORD:youshallnotpass}
     sources:
       youtube: true
+      soundcloud: true
       bandcamp: true
-      http: true
       twitch: true
       vimeo: true
-      soundcloud: true
+      http: true
       local: false
     filters:
       volume: true

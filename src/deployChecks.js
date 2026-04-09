@@ -9,9 +9,7 @@ function validateConfig(config) {
   ];
 
   const missing = required.filter(([, value]) => !value).map(([key]) => key);
-  if (missing.length) {
-    throw new Error(`Missing env vars: ${missing.join(", ")}`);
-  }
+  if (missing.length) throw new Error(`Missing env vars: ${missing.join(", ")}`);
 }
 
 module.exports = { validateConfig };

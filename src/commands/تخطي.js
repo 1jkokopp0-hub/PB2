@@ -1,12 +1,12 @@
-const { errorEmbed, okEmbed } = require("../utils/embeds");
+const { error, ok } = require("../utils/embeds");
 
 module.exports = {
   name: "تخطي",
   aliases: ["سكيب", "skip"],
   async run({ client, message }) {
-    const player = client.manager.players.get(message.guild.id);
-    if (!player || !player.queue.current) return message.channel.send({ embeds: [errorEmbed("ماكو شي شغال حالياً.")] });
-    player.stop();
-    return message.channel.send({ embeds: [okEmbed("تم", "تم تخطي الاغنية.")] });
+    const player = client.lavalink.getPlayer(message.guild.id);
+    if (!player || !player.queue.current) return message.channel.send({ embeds: [error("ماكو شي شغال حالياً.")] });
+    await player.skip();
+    return message.channel.send({ embeds: [ok("تم تخطي الاغنية.")] });
   }
 };
